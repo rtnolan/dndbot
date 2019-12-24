@@ -7,14 +7,14 @@ const config = require('./config');
 const Discord = require('discord.js');
 
 const bot = new Discord.Client();
-bot.login(process.env.TOKEN);
+bot.login(config.default.TOKEN);
 bot.on('ready', () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.info(`Logged in as ${bot.user.tag}!`);
 });
 bot.on('message', async message => {
   if (message.author.bot) return;
-  if (message.content.indexOf(config.prefix) !== 0) return;
+  if (message.content.indexOf(config.default.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLocaleLowerCase();
 
@@ -45,10 +45,7 @@ bot.on('message', async message => {
       } else {
         message.reply('```You rolled a ' + result + ' using ' + input + ' (' + rolls.join(' + ') + ')' + '```');
       }
-    } // for(let i = 0; i <)
-    // const num = Math.floor(Math.random() * (dice.substr(1) - 1 + 1)) + 1
-    // message.reply('```You rolled a ' + num + ' on a ' + dice + '```')
-
+    }
   } else if (command === 'help') {
     message.reply('```The following commands are available: \n > +roll: <num_of_dice><dice>+<modifier>```');
   }
