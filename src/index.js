@@ -1,8 +1,9 @@
+require('dotenv').config()
 const config = require('./config')
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 
-bot.login(config.TOKEN)
+bot.login(process.env.TOKEN)
 
 bot.on('ready', () => {
   // This event will run if the bot starts, and logs in, successfully.
