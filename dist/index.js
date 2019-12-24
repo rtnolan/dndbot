@@ -7,7 +7,6 @@ const config = require('./config');
 const Discord = require('discord.js');
 
 const bot = new Discord.Client();
-console.log(process.env.TOKEN);
 bot.login(process.env.TOKEN);
 bot.on('ready', () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -25,8 +24,6 @@ bot.on('message', async message => {
     const numDice = input.split('d')[0];
     const dice = input.split('d').pop().split('+')[0];
     const modifier = input.split('+')[1];
-    console.log(modifier);
-    console.log(typeof modifier);
 
     if (numDice === '') {
       const num = Math.floor(Math.random() * (dice - 1 + 1)) + 1;
@@ -43,7 +40,6 @@ bot.on('message', async message => {
       }
 
       if (modifier) {
-        console.log(typeof result);
         result += Number(modifier);
         message.reply('```You rolled a ' + result + ' using ' + input + ' (' + rolls.join(' + ') + ') + ' + modifier + '```');
       } else {

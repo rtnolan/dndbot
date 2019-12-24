@@ -2,7 +2,7 @@
   "name": "dndbot",
   "version": "1.0.0",
   "description": "Helper bot for DnD sessions.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec yarn restart",

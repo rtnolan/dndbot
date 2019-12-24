@@ -3,7 +3,6 @@ const config = require('./config')
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 
-console.log(process.env.TOKEN)
 bot.login(process.env.TOKEN)
 
 bot.on('ready', () => {
