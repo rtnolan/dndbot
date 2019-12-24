@@ -1,11 +1,14 @@
 "use strict";
 
+require('dotenv').config();
+
 const config = require('./config');
 
 const Discord = require('discord.js');
 
 const bot = new Discord.Client();
-bot.login(config.TOKEN);
+console.log(process.env.TOKEN);
+bot.login(process.env.TOKEN);
 bot.on('ready', () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.info(`Logged in as ${bot.user.tag}!`);
@@ -26,8 +29,8 @@ bot.on('message', async message => {
     console.log(typeof modifier);
 
     if (numDice === '') {
-      const num = Math.floor(Math.random() * (dice.substr(1) - 1 + 1)) + 1;
-      message.reply('```You rolled a ' + num + ' on a ' + dice + '```');
+      const num = Math.floor(Math.random() * (dice - 1 + 1)) + 1;
+      message.reply('```You rolled a ' + num + ' on a d' + dice + '```');
     } else {
       let result = 0;
       let num = 0;

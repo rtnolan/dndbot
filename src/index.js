@@ -3,6 +3,7 @@ const config = require('./config')
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 
+console.log(process.env.TOKEN)
 bot.login(process.env.TOKEN)
 
 bot.on('ready', () => {
@@ -30,11 +31,9 @@ bot.on('message', async message => {
       .pop()
       .split('+')[0]
     const modifier = input.split('+')[1]
-    console.log(modifier)
-    console.log(typeof modifier)
     if (numDice === '') {
-      const num = Math.floor(Math.random() * (dice.substr(1) - 1 + 1)) + 1
-      message.reply('```You rolled a ' + num + ' on a ' + dice + '```')
+      const num = Math.floor(Math.random() * (dice - 1 + 1)) + 1
+      message.reply('```You rolled a ' + num + ' on a d' + dice + '```')
     } else {
       let result = 0
       let num = 0
@@ -46,7 +45,6 @@ bot.on('message', async message => {
       }
 
       if (modifier) {
-        console.log(typeof result)
         result += Number(modifier)
         message.reply(
           '```You rolled a ' +
