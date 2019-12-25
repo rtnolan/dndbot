@@ -15,7 +15,7 @@ bot.on('ready', () => {
 bot.on('message', async message => {
   if (message.author.bot) return;
   if (message.content.indexOf(config.default.prefix) !== 0) return;
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(config.default.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLocaleLowerCase();
 
   if (command === 'roll') {

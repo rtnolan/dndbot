@@ -16,7 +16,7 @@ bot.on('message', async message => {
   if (message.content.indexOf(config.default.prefix) !== 0) return
 
   const args = message.content
-    .slice(config.prefix.length)
+    .slice(config.default.prefix.length)
     .trim()
     .split(/ +/g)
   const command = args.shift().toLocaleLowerCase()
