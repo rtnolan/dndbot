@@ -73,5 +73,7 @@ bot.on('message', async message => {
     message.reply(
       '```The following commands are available: \n > +roll: <num_of_dice><dice>+<modifier>```'
     )
+  } else {
+    message.reply('Jack')
   }
 })
