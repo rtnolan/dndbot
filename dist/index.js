@@ -7,6 +7,9 @@ const config = require('./config');
 const Discord = require('discord.js');
 
 const bot = new Discord.Client();
+
+const morty = require('./utils/morty');
+
 bot.login(config.default.TOKEN);
 bot.on('ready', () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -48,5 +51,12 @@ bot.on('message', async message => {
     }
   } else if (command === 'help') {
     message.reply('```The following commands are available: \n > +roll: <num_of_dice><dice>+<modifier>```');
+  } else if (command === 'mortyroll') {
+    const num = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+    const msg = morty.default[num];
+    console.log(msg);
+    message.reply('You rolled a: ' + msg);
+  } else {
+    message.reply('Jack');
   }
 });
